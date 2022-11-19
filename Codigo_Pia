@@ -1,0 +1,1069 @@
+activos = {}
+Pasivos = {}
+Capital_C = {}
+Inf_inventario = {}
+inventario_inicial = {}
+inventario_final = {}
+costos = {}
+precios = {}
+Gastos_administracion = {}
+Gastos_fabrica = {}
+Separador = ("_"*70) + "\n"
+
+print("-"*20 + "BIENVENIDO A NUESTRO PIA" + "-"*20)
+print(Separador)
+while True:
+    Menu = input(f"\n A) Ingresar informacion \n B) Ver el presupuesto maestro \n C) Salir \n Seleccione alguna de las opciones: ").upper()
+    print(Separador)
+    if Menu == "A":
+        Sub_menu1 = input(f"\n A)Activos \n B)Pasivos \n C)Capital contable \n D)Requerimiento de materiales \n E)Informacion de inventarios \n F)Productos \n G)Gastos \n").upper()
+        print(Separador)
+        if Sub_menu1 == "A":
+            print("Comenzaremos con sus activos circulantes")
+            print(Separador)
+            try:
+                efectivo = int(input("Ingrese su efectivo: "))
+            except:
+                print("Necesitamos el monto de efectivo")
+                continue
+            try:
+                cliente = int(input("Ingrese su cifra de clientes: "))
+            except:
+                print("Ingreese el monto de clientes")
+                continue
+            try:
+                deudores_diversos = int(input("Ingrese su cifra de deudores diversos "))
+            except:
+                print("Necesitamos el monto de deudores diversos")
+                continue
+            try:    
+                funcionario_empleados = int(input("Ingrese su cifra de funcionario y empleados "))
+            except:
+                print("Necesitamos el monto de funcionario de empleados")
+                continue
+            try:
+                inventarios_materiales = int(input("Ingrese su cifra de inventarios de materiales "))
+            except:
+                print("Necesitamos el monto de inventarios de materiales")
+                continue
+            try:
+                inventario_productos = int(input("INgrese su cifra de inventarios de productos "))
+            except:
+                print("Necesitamos el monto de inventario de productos")
+                continue    
+            
+            Suma_ac = efectivo + cliente + deudores_diversos + funcionario_empleados + inventarios_materiales + inventario_productos
+        
+            print(Separador)
+            print(f"Total de sus activos circulantes es: {Suma_ac}")
+            print(Separador)
+            print("Comenzaremos con sus activos no circulantes")
+            print(Separador)
+            try:
+                terreno = int(input("Ingrese su cifra de terrenos "))
+            except:
+                print("Necesitamos el monto de terrenos ")
+                continue
+            try:    
+                planta_equipo = int(input("Ingrese su cifra de plantas y equipos "))
+            except:
+                print("Necesitamos el monto de planta y equipo")
+                continue
+            try:    
+                depreciacion_acum = int(input("Ingrese sus depreciaciones acumuladas "))
+            except:
+                print("Necesitamos el monto de depreciaciones acumuladas")
+                continue
+
+            Suma_nac = terreno + planta_equipo + depreciacion_acum
+            
+            print(Separador)
+            print(f"Total de sus activos no circulantes es: {Suma_nac}")
+
+            Activos = Suma_ac + Suma_nac 
+            print(f"Total de activos es: {Activos}")
+
+            activo =[efectivo,cliente,deudores_diversos,funcionario_empleados,inventarios_materiales,inventario_productos,terreno,planta_equipo,depreciacion_acum]    
+            continue
+        elif Sub_menu1 == "B":
+            print("Comencemos con los pasivos a corto plazo")
+            print(Separador)
+            try:
+                proveedor = int(input("Ingrese su cifra de sus proveedores "))
+            except:
+                print("Necesitamos el monto de proveedor")
+                continue
+            try:
+                documentos_pagar = int(input("Ingrese su cifra de documentos por pagar "))
+            except:
+                print("Necesitamos el monto de documentos por pagar")
+                continue
+            try:
+                isr_pagar = int(input("Ingrese su cifra de ISR por pagar "))
+            except:
+                print("Necesitamos el monto de ISR por pagar")
+                continue
+
+            print(Separador)
+
+            Suma_pc = proveedor + documentos_pagar + isr_pagar
+            print(f"Total de sus pasivos a corto plazo {Suma_pc}")
+            print(Separador)
+
+            print("Comencemos con los pasivos a largo plazo")
+            print(Separador)
+
+            try:
+                Prestamos_bancarios = int(input("Ingrese su cifra de prestamos bancarios "))
+            except:
+                print("Necesitamos el monto de Prestamos bancarios")
+                continue
+            Suma_pl = Prestamos_bancarios
+            print(Separador)
+
+            print(f"Total de Pasivos {Suma_pl}")
+
+            Suma_pasivos = Suma_pl + Suma_pc
+            print(f"Total de sus pasivos es: {Suma_pasivos}")
+
+            Pasivos= [proveedor,documentos_pagar,isr_pagar,Prestamos_bancarios]
+            continue
+        elif Sub_menu1 == "C":
+            print("Comencemos con la capital contable")
+            try:
+                capital_constribuido = int(input("Ingrese su cifra de capital construbuido "))
+            except:
+                print("Necesitamos el monto de capital contribuido")
+                continue
+            try:    
+                capital_ganado = int(input("Ingrese su cifra de capital ganado "))
+            except:
+                print("Necesitamos el monto de capital ganado")
+                continue
+            print(Separador)
+
+            Suma_capital = capital_constribuido + capital_ganado
+
+            print(f"El total de la capital contable es {Suma_capital}")
+
+            Capital_C =[capital_constribuido,capital_ganado]    
+            continue
+        elif Sub_menu1 == "D":
+            print("La mano de obra directa costara 15 pesos en el primer semestres \n y en el segundo semestre costara de 18 pesos")
+            print(Separador)
+
+            print("-"*17 + "Reloj Manecilla" + "-"*17)
+            try:
+                rm_ma = float(input("Ingrese las piezas para la materia prima A piezas "))
+            except:
+                print("Necesitamos saber cuanto es de materia A ")
+                continue
+            try:
+                rm_mb = float(input("Ingrese las piezas para la materia prima B piezas "))
+            except:
+                print("Necesitamos saber cuanto es de materia B ")
+                continue
+            try:
+                rm_mc = float(input("Ingrese las piezas para la materia prima C piezas "))
+            except:
+                print("Necesitamos saber cuanto es de materia C ")
+                continue
+            print(Separador)
+
+            print("-"*17 + "Reloj digitales" + "-"*17)
+            try:
+                rd_ma = float(input("Ingrese las piezas para la materia prima A piezas "))
+            except:
+                print("Necesitamos saber cuanto es de materia A ")
+                continue
+            try:
+                rd_mb = float(input("Ingrese las piezas para la materia prima B piezas "))
+            except:
+                print("Necesitamos saber cuanto es de materia B ")
+                continue
+            try:
+                rd_mc = float(input("Ingrese las piezas para la materia prima C piezas "))
+            except:
+                print("Necesitamos saber cuanto es de materia C ")
+                continue
+            print(Separador)
+
+            print("-"*17 + "Reloj inteligente" + "-"*17)
+            try:
+                ri_ma = float(input("Ingrese las piezas para la materia prima A piezas "))
+            except:
+                print("Necesitamos saber cuanto es de materia A ")
+                continue
+            try:
+                ri_mb = float(input("Ingrese las piezas para la materia prima B piezas "))
+            except:
+                print("Necesitamos saber cuanto es de materia B ")
+                continue
+            try:    
+                ri_mc = float(input("Ingrese las piezas para la materia prima C piezas "))
+            except:
+                print("Necesitamos saber cuanto es de materia C ")
+                continue
+            print(Separador)
+
+            print("-"*17 + "Horas mano de obra" + "-"*17)
+            try:
+                mho_rm = float(input("Ingrese las horas de mano de obra para la materia prima A piezas "))
+            except:
+                print("Necesitamos saber cuantas horas son de materia A ")
+                continue
+            try:
+                mho_rd = float(input("Ingrese las horas de mano de obra para la materia prima B piezas "))
+            except:
+                print("Necesitamos saber cuantas horas son de materia B ")
+                continue
+            try:
+                mho_ri = float(input("Ingrese las horas de mano de obra para la materia prima C piezas "))
+            except:
+                print("Necesitamos saber cuantas horas son de materia C ")
+                continue    
+
+            Inf_inventario = [rm_ma,rm_mb,rm_mc,rd_ma,rd_mb,rd_mc,ri_ma,ri_mb,ri_mc,mho_ri,mho_rm,mho_rd]
+            continue
+        elif Sub_menu1 == "E":
+            Sub_menu2 =input("\n A)Inventario inicial primer semestre \n B)Inventario final segundo semestre \n C)Costo primer semestre \n D)Costo segundo semestre\n").upper()
+            if Sub_menu2 == "A":
+                print("-"*10 + "Inventario inicial de primer Semestre" + "-"*10)   
+                try:
+                    iip_ma = int(input("Ingrese sus piezas de materia prima A "))
+                except:
+                    print("Necesitamos saber cuanto es de materia A ")
+                    continue
+                try:
+                    iip_mb = int(input("Ingrese sus piezas de materia prima B "))
+                except:
+                    print("Necesitamos saber cuanto es de materia B ")
+                    continue
+                try:
+                    iip_mc = int(input("Ingrese sus piezas de materia prima C "))
+                except:
+                    print("Necesitamos saber cuanto es de materia C ")    
+                    continue
+            # ---    
+                try:
+                    iip_rm = int(input("Ingrese sus piezas de relojes de manecillas "))
+                except:
+                    print("Necesitamos saber cuantos relojes tenemos")
+                    continue
+                try:
+                    iip_rd = int(input("Ingrese sus piezas de relojes de digitales "))
+                except:
+                    print("Necesitamos saber cuantos relojes tenemos ")
+                    continue
+                try:
+                    iip_ri = int(input("Ingrese sus piezas de relojes de inteligentes "))
+                except:
+                    print("Necesitamos saber cuantos relojes tenemos ")
+                    continue
+
+                inventario_inicial =[iip_ma,iip_mb,iip_mc,iip_rm,iip_rd,iip_ri]
+                print(Separador)
+                continue
+            elif Sub_menu2 == "B":
+                print(Separador)
+                print("-"*10 + "Inventario final de segundo Semestre" + "-"*10)    
+                try:
+                    ifs_ma = int(input("Ingrese sus piezas de materia prima A "))
+                except:
+                    print("Necesitamos saber cuanto es de materia A ")
+                    continue
+                try:
+                    ifs_mb = int(input("Ingrese sus piezas de materia prima B "))
+                except:
+                    print("Necesitamos saber cuanto es de materia B ")
+                    continue
+                try:
+                    ifs_mc = int(input("Ingrese sus piezas de materia prima C "))
+                except:
+                    print("Necesitamos saber cuanto es de materia C ")
+                    continue    
+            # ---   
+                try:
+                    ifs_rm = int(input("Ingrese sus piezas de relojes de manecillas "))
+                except:
+                    print("Necesitamos saber cuantos relojes tenemos ")
+                    continue
+                try:
+                    ifs_rd = int(input("Ingrese sus piezas de relojes de digitales "))
+                except:
+                    print("Necesitamos saber cuantos relojes tenemos ")
+                    continue
+                try:    
+                    ifs_ri = int(input("Ingrese sus piezas de relojes de inteligentes "))
+                except:
+                    print("Necesitamos saber cuantos relojes tenemos ")
+                    continue
+                
+                inventario_final =[ifs_ma,ifs_mb,ifs_mc,ifs_rm,ifs_rd,ifs_ri]
+                continue
+            elif Sub_menu2 == "C":
+                print(Separador)
+                print("-"*10 + "Costo primer Semestre" + "-"*10)   
+                try:
+                    cps_ma = int(input("Ingrese sus piezas de materia prima A "))
+                except:
+                    print("Necesitamos saber cuanto es de materia A ")
+                    continue
+                try:
+                    cps_mb = int(input("Ingrese sus piezas de materia prima B "))
+                except:
+                    print("Necesitamos saber cuanto es de materia B ")
+                    continue
+                try:
+                    cps_mc = int(input("Ingrese sus piezas de materia prima C "))
+                except:
+                    print("Necesitamos saber cuanto es de materia C ")
+                    continue
+
+                costos_1er = [cps_ma,cps_mb,cps_mc]
+                print(Separador)
+                continue
+
+            elif Sub_menu2 == "D":
+                print(Separador)
+                print("-"*10 + "Costo segundo Semestre" + "-"*10)   
+                try:
+                    css_ma = int(input("Ingrese sus piezas de materia prima A "))
+                except:
+                    print("Necesitamos saber cuanto es de materia A ")
+                    continue
+                try:
+                    css_mb = int(input("Ingrese sus piezas de materia prima B "))
+                except:
+                    print("Necesitamos saber cuanto es de materia B ")
+                    continue
+                try:
+                    css_mc = int(input("Ingrese sus piezas de materia prima C "))
+                except:
+                    print("Necesitamos saber cuanto es de materia C ")
+                    continue
+
+                costos_2do = [css_ma,css_mb,css_mc]
+                print(Separador)
+                continue
+
+        elif Sub_menu1 == "F":
+            print(Separador)
+            print("-"*19 + "Precio de venta" + "-"*19)
+            try:
+                pvps_rm = int(input("Ingrese el precio de venta de los relojes de manecillas 1er.Semestre "))
+            except:
+                print("Necesitamos el precio de  reloj")
+                continue
+            try:
+                pvps_rd = int(input("Ingrese el precio de venta de los relojes digitales 1er.Semestre "))
+            except:
+                print("Necesitamos el precio de  reloj")
+                continue
+            try:
+                pvps_ri = int(input("Ingrese el precio de venta de los relojes inteligentes 1er.Semestre "))
+            except:
+                print("Necesitamos el precio de  reloj")
+                continue
+            try:
+                pvss_rm = int(input("Ingrese el precio de venta de los relojes de manecillas 2do.Semestre "))
+            except:
+                print("Necesitamos el precio de  reloj")
+                continue
+            try:
+                pvss_rd = int(input("Ingrese el precio de venta de los relojes digitales 2do.Semestre "))
+            except:
+                print("Necesitamos el precio de  reloj")
+                continue
+            try:
+                pvss_ri = int(input("Ingrese el precio de venta de los relojes inteligentes 2do.Semestre "))
+            except:
+                print("Necesitamos el precio de  reloj")
+                continue
+            print("-"*19 + "Ventas planeadas" + "-"*19)
+            try:
+                vpps_rm = int(input("Ingrese las ventas planeadas de los relojes de manecillas 1er.Semestre "))
+            except:
+                print("Necesitamos las ventas")
+                continue
+            try:    
+                vpps_rd = int(input("Ingrese las ventas planeadas de los relojes digitales 1er.Semestre "))
+            except:
+                print("Necesitamos las ventas")
+                continue
+            try:
+                vpps_ri = int(input("Ingrese las ventas planeadas de los relojes inteligentes 1er.Semestre "))
+            except:
+                print("Necesitamos las ventas")
+                continue
+            try:
+                vpss_rm = int(input("Ingrese las ventas planeadas de los relojes de manecillas 2do.Semestre "))
+            except:
+                print("Necesitamos las ventas")
+                continue
+            try:
+                vpss_rd = int(input("Ingrese las ventas planeadas de los relojes digitales 2do.Semestre "))
+            except:
+                print("Necesitamos las ventas")
+                continue
+            try:
+                vpss_ri = int(input("Ingrese las ventas planeadas de los relojes inteligentes 2do.Semestre "))    
+            except:
+                print("Necesitamos las ventas")
+                continue
+
+            precios = [pvps_rm,pvps_rd,pvps_ri,vpps_rm,vpps_rd,vpss_ri]  
+            print(Separador)
+            continue
+
+        elif Sub_menu1 == "G":
+
+            print(Separador)
+            sub_menu3 = input("\nA)Gastos de administracion y ventas \n B)Gastos de fabricacion indirectos\n").upper()
+            print(Separador)
+
+            if sub_menu3 == "A":
+                try:
+                    depreciacion_ga = int(input("Ingrese sus cifras anuales de la depreciacion "))
+                except:
+                    print("Necesitamos la depreciacion")
+                    continue
+                try:
+                    sueldo_salario_ga = int(input("Ingrese sus cifras anuales de los sueldos y salarios "))
+                except:
+                    print("Necesitamos el sueldo de salario")
+                    continue
+                try:
+                    comisiones_ga = int(input("Ingrese el porcentaje de las comisiones "))
+                except:
+                    print("Necesitamos las comisiones")
+                    continue
+                try:
+                    varios_ps = int(input("Ingrese los gastos varios de primer semestre "))
+                except:
+                    print("Necesitamos los varios")
+                    continue
+                try:    
+                    varios_ss = int(input("Ingrese los gastos varios de segundo semestre "))
+                except:
+                    print("Necesitamos los varios")
+                    continue
+                try:
+                    intereses_prestamo_ga = int(input("Ingrese los intereses por prestamo "))
+                except:
+                    print("Necesitamos los interes de prestamos")
+                    continue
+                
+                Gastos_administracion = [depreciacion_ga,sueldo_salario_ga,comisiones_ga,varios_ps,varios_ss,intereses_prestamo_ga]
+                continue
+
+            elif sub_menu3 =="B":
+                try:
+                    depreciacion_gf = int(input("Ingrese sus cifras de la depreciacion "))
+                except:
+                    print("Necesitamos en monto de las depreciaciones ")
+                    continue
+                try:
+                    seguros_gf = int(input("Ingrese sus cifras anuales de los seguros "))
+                except:
+                    print("Necesitamos en monto de los seguros")
+                    continue
+                try:
+                    mantenimiento_gf_ps = int(input("Ingrese sus cifras del mantenimiento (primer semestre) "))
+                except:
+                    print("Necesitamos en monto del mantenimiento ")
+                    continue
+                try:    
+                    mantenimiento_gf_ss = int(input("Ingrese sus cifras del mantenimiento (segundo semestre) "))
+                except:
+                    print("Necesitamos en monto de mantenimiento ")
+                    continue
+                try:
+                    energeticos_gf_ps = int(input("Ingrese sus cifras de energeticos (primer semestre) "))
+                except:
+                    print("Neceistamos el monto de los energeticos ")
+                    continue
+                try:       
+                    energeticos_gf_ss = int(input("Ingrese sus cifras de energeticos (segundo semestre) "))
+                except:
+                    print("Necesitamos el monto de los energeticos")
+                    continue
+                try:
+                    varios_gf = int(input("Ingrese sus cifras anuales de varios "))
+                except:
+                    print("Necesitamos el monto de los varios")
+                    continue
+
+                Gastos_fabrica = [depreciacion_gf,seguros_gf,mantenimiento_gf_ps,mantenimiento_gf_ss,energeticos_gf_ps,energeticos_gf_ss,varios_gf]    
+                continue
+
+    elif Menu == "B":
+        print()
+        print(Separador)
+        print()
+
+        print("-"*15 + "Presupuesto de ventas" + "-"*15)
+        print("{:<30} {:<20} {:<20} {:<13}".format(' '*10, '1er.Semestre', '2do.Semestre', '2021'))
+        print("Producto RM")
+        print("{:<30} {:<20} {:<20} {:<13}".format('Unidades a vender', vpps_rm, vpss_rm," "*10))
+        print("{:<30} {:<20} {:<20} {:<13}".format('Precio de ventas', pvps_rm, pvss_rm," "*10))
+        Importe_rm_1er = vpps_rm * pvps_rm
+        Importe_rm_2do = vpss_rm * pvss_rm
+        importe_venta_rm = Importe_rm_1er + Importe_rm_2do
+        print("{:<30} {:<20} {:<20} {:<13}".format('Importe de venta', Importe_rm_1er, Importe_rm_2do, importe_venta_rm))
+        print("Producto RD")
+        print("{:<30} {:<20} {:<20} {:<13}".format('Unidades a vender', vpps_rd, vpss_rd," "*10))
+        print("{:<30} {:<20} {:<20} {:<13}".format('Precio de ventas', pvps_rd, pvss_rd," "*10))
+        Importe_rd_1er = vpps_rd * pvps_rd
+        Importe_rd_2do = vpss_rd * pvss_rd 
+        importe_venta_rd = Importe_rd_1er + Importe_rd_2do
+        print("{:<30} {:<20} {:<20} {:<13}".format('Importe de venta', Importe_rd_1er, Importe_rd_2do, importe_venta_rd))
+        print("Producto RI")
+        print("{:<30} {:<20} {:<20} {:<13}".format('Unidades a vender',vpps_ri, vpss_ri," "*10))
+        print("{:<30} {:<20} {:<20} {:<13}".format('Precio de ventas',pvps_ri, pvss_ri," "*10))
+        Importe_ri_1er = vpps_ri * pvps_ri
+        Importe_ri_2do = vpss_ri * pvss_ri 
+        importe_venta_ri = Importe_ri_1er + Importe_ri_2do
+        print("{:<30} {:<20} {:<20} {:<13}".format('Importe de venta', Importe_ri_1er, Importe_ri_2do, importe_venta_ri))
+        Suma_importe_1er = Importe_rd_1er + Importe_ri_1er + Importe_rm_1er
+        Suma_importe_2do = Importe_ri_2do + Importe_rd_2do + Importe_rm_2do
+        Total_ventas = importe_venta_rd + importe_venta_ri + importe_venta_rm
+        print("{:<30} {:<20} {:<20} {:<13}".format('Total de ventas por semestre', Suma_importe_1er, Suma_importe_2do,Total_ventas))
+        print()
+        print(Separador)
+        print()
+        print("-"*15 + "Determinacion del saldo de cliente y flujo de entrada" + "-"*15)
+        print("{:<30} {:<20} {:<20} ".format('Descripcion', 'Importe', 'Total'))
+        print("{:<30} {:<20} {:<20} ".format('Saldo de cliente 31-Dic-2020'," "*10 ,cliente))
+        print("{:<30} {:<20} {:<20} ".format('Ventas 2021'," "*10,Total_ventas))
+        Cliente_2021 = cliente + Total_ventas
+        print("{:<30} {:<20} {:<20} ".format('Total de clientes 2021'," "*10 ,Cliente_2021))
+        print()
+        print("{:<30} {:<20} {:<20} ".format('Entrada de efectivo'," "*10," "*10))
+        print("{:<30} {:<20} {:<20} ".format('Por cobranza del 2020',cliente," "*10))
+        Cobranza_2021= Total_ventas * 0.8
+        print("{:<30} {:<20} {:<20} ".format('Por cobranza del 2021',Cobranza_2021," "*10))
+        suma_saldo_2021 = Cobranza_2021 + cliente
+        print("{:<30} {:<20} {:<20} ".format(" "*10," "*10,suma_saldo_2021))
+        saldo_total_cliente_2021 = suma_saldo_2021 + Cliente_2021
+        print("{:<30} {:<20} {:<20} ".format("Saldo de cliente del 2021"," "*10,saldo_total_cliente_2021))
+        print()
+        print(Separador)
+        print()
+        print("-"*15 + "Presupuesto de produccion" + "-"*15)
+        print("{:<30} {:<20} {:<20} {:<20} ".format(''*10,"1er. Semestre" ,"2do. Semestre","Total 2021"))
+        print("Producto RM")
+        unidades_2021_rm = vpps_rm + vpss_rm
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Unidades por vender',vpps_rm ,vpss_rm,unidades_2021_rm))
+        print("{:<30} {:<20} {:<20} {:<13} ".format('(+) Inventario final',iip_rm ,ifs_rm,ifs_rm))
+        suma_unidades_1er_rm = vpps_rm + iip_rm
+        suma_unidades_2do_rm = vpss_rm + ifs_rm
+        suma_unidades_rm = unidades_2021_rm + ifs_rm
+        print("{:<30} {:<20} {:<20} {:<13} ".format('(=) Total de unidades',suma_unidades_1er_rm,suma_unidades_2do_rm, suma_unidades_rm))
+        print("{:<30} {:<20} {:<20} {:<13} ".format('(-) Inventario inicial',iip_rm,iip_rm,iip_rm))
+        resta_unidades_1er_rm = suma_unidades_1er_rm - iip_rm
+        resta_unidades_2do_rm = suma_unidades_2do_rm - iip_rm
+        total_unidades_rm = suma_unidades_rm - iip_rm  
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Unidades a producir',resta_unidades_1er_rm ,resta_unidades_2do_rm,total_unidades_rm))
+        print("Productos RD")
+        unidades_2021_rd = vpps_rd + vpss_rd
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Unidades por vender',vpps_rd,vpss_rd,unidades_2021_rd))
+        print("{:<30} {:<20} {:<20} {:<13}".format('(+) Inventario final',iip_rd ,ifs_rd,ifs_rd))
+        suma_unidades_1er_rd = vpps_rd + iip_rd
+        suma_unidades_2do_rd = vpss_rd + ifs_rd
+        suma_unidades_rd = ifs_rd + unidades_2021_rd
+        print("{:<30} {:<20} {:<20} {:<13} ".format('(=) Total de unidades',suma_unidades_1er_rd,suma_unidades_2do_rd, suma_unidades_rd))
+        print("{:<30} {:<20} {:<20} {:<13}".format('(-) Inventario inicial',iip_rd,iip_rd,iip_rd))
+        resta_unidades_1er_rd = suma_unidades_1er_rd - iip_rd
+        resta_unidades_2do_rd = suma_unidades_2do_rd - iip_rd
+        total_unidades_rd = suma_unidades_rd - iip_rd 
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Unidades a producir',resta_unidades_1er_rd ,resta_unidades_2do_rd,total_unidades_rd))
+        print("Producto RI")
+        unidades_2021_ri = vpps_ri + vpss_ri
+        print("{:<30} {:<20} {:<20} {:<13}".format('Unidades por vender',vpps_ri,vpss_ri,unidades_2021_ri))
+        print("{:<30} {:<20} {:<20} {:<13} ".format('(+) Inventario final',iip_ri ,ifs_ri,ifs_ri))
+        suma_unidades_1er_ri = vpps_ri + iip_ri
+        suma_unidades_2do_ri = vpss_ri + ifs_ri
+        suma_unidades_ri = unidades_2021_ri + ifs_ri
+        print("{:<30} {:<20} {:<20} {:<13} ".format('(=) Total de unidades',suma_unidades_1er_ri,suma_unidades_2do_ri, suma_unidades_ri))
+        print("{:<30} {:<20} {:<20} {:<13} ".format('(-) Inventario inicial',iip_ri ,iip_ri,iip_ri))
+        resta_unidades_1er_ri = suma_unidades_1er_ri - iip_ri
+        resta_unidades_2do_ri = suma_unidades_2do_ri - iip_ri
+        total_unidades_ri = suma_unidades_ri - iip_ri
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Unidades a producir',resta_unidades_1er_ri ,resta_unidades_2do_ri,total_unidades_ri))
+        print()
+        print(Separador)
+        print()
+        print("-"*15 + "Presupuesto de requerimiento de materiales" + "-"*15)
+        print("{:<30} {:<20} {:<20} {:<13} ".format(' '*10,"1er. Semestre" ,"2do. Semestre","Total 2021"))
+        #NO LO IMPRIME
+        print("Producto RM")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Unidades a producir',resta_unidades_1er_rm,resta_unidades_2do_rm,total_unidades_rm))
+        print()
+        # ----
+        print("Material A")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Requerimiento de material',rm_ma,rm_ma,rm_ma))
+        total1er_ma_rm = resta_unidades_1er_rm * rm_ma
+        total2do_ma_rm = resta_unidades_2do_rm * rm_ma
+        total_ma_rm = total_unidades_rm * rm_ma
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Total de material A requerido',total1er_ma_rm ,total2do_ma_rm,total_ma_rm))
+        print("Material B")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Requerimiento de material',rm_mb,rm_mb,rm_mb))
+        total1er_mb_rm = resta_unidades_1er_rm * rm_mb
+        total2do_mb_rm = resta_unidades_2do_rm * rm_mb
+        total_mb_rm = total_unidades_rm * rm_mb
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Total de material A requerido',total1er_mb_rm ,total2do_mb_rm,total_mb_rm))
+        print("Material C")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Requerimiento de material',rm_mc,rm_mc,rm_mc))
+        total1er_mc_rm = resta_unidades_1er_rm * rm_mc
+        total2do_mc_rm = resta_unidades_2do_rm * rm_mc
+        total_mc_rm = total_unidades_rm * rm_mc
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Total de material A requerido',total1er_mc_rm ,total2do_mc_rm,total_mc_rm))
+        print("")
+        print("Producto RD")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Unidades a producir',resta_unidades_1er_rd,resta_unidades_2do_rd,total_unidades_rd))
+        print()
+        print("Material A")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Requerimiento de material',rd_ma,rd_ma,rd_ma))
+        total1er_ma_rd = resta_unidades_1er_rd * rd_ma
+        total2do_ma_rd = resta_unidades_2do_rd * rd_ma
+        total_ma_rd = total_unidades_rd * rd_ma
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Total de material A requerido',total1er_ma_rd ,total2do_ma_rd,total_ma_rd))
+        print("Material B")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Requerimiento de material',rd_mb,rd_mb,rd_mb))
+        total1er_mb_rd = resta_unidades_1er_rd * rd_mb
+        total2do_mb_rd = resta_unidades_2do_rd * rd_mb
+        total_mb_rd = total_unidades_rd * rd_mb
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Total de material A requerido',total1er_mb_rd ,total2do_mb_rd,total_mb_rd))
+        print("Material C")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Requerimiento de material',rd_mc,rd_mc,rd_mc))
+        total1er_mc_rd = resta_unidades_1er_rd * rd_mc
+        total2do_mc_rd = resta_unidades_2do_rd * rd_mc
+        total_mc_rd = total_unidades_rd * rd_mc
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Total de material A requerido',total1er_mc_rd ,total2do_mc_rd,total_mc_rd))
+        print("")
+        print("Producto RI")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Unidades a producir',resta_unidades_1er_ri,resta_unidades_2do_ri,total_unidades_ri))
+        print()
+        print("Material A")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Requerimiento de material',ri_ma,ri_ma,ri_ma))
+        total1er_ma_ri = resta_unidades_1er_ri * ri_ma
+        total2do_ma_ri = resta_unidades_2do_ri * ri_ma
+        total_ma_ri = total_unidades_ri * ri_ma
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Total de material A requerido',total1er_ma_ri ,total2do_ma_ri,total_ma_ri))
+        print("Material B")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Requerimiento de material',ri_mb,ri_mb,ri_mb))
+        total1er_mb_ri = resta_unidades_1er_ri * ri_mb
+        total2do_mb_ri = resta_unidades_2do_ri * ri_mb
+        total_mb_ri = total_unidades_ri * ri_mb
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Total de material A requerido',total1er_mb_ri ,total2do_mb_ri,total_mb_ri))
+        print("Material C")
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Requerimiento de material',ri_mc,ri_mc,ri_mc))
+        total1er_mc_ri = resta_unidades_1er_ri * ri_mc
+        total2do_mc_ri = resta_unidades_2do_ri * ri_mc
+        total_mc_ri = total_unidades_ri * ri_mc
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Total de material A requerido',total1er_mc_ri ,total2do_mc_ri,total_mc_ri))
+        print("Total de requerimiento (gramos)")
+
+        Suma_ma_1er = total1er_ma_rd + total1er_ma_ri + total1er_ma_rm
+        Suma_ma_2do = total2do_ma_rd + total2do_ma_ri + total2do_ma_rm
+        Suma_total_ma = total_ma_rd + total_ma_ri + total_ma_rm
+
+        Suma_mb_1er = total1er_mb_rd + total1er_mb_ri + total1er_mb_rm
+        Suma_mb_2do = total2do_mb_rd + total2do_mb_ri + total2do_mb_rm
+        Suma_total_mb = total_mb_rd + total_mb_ri + total_mb_rm
+
+        Suma_mc_1er = total1er_mc_rd + total1er_mc_ri + total1er_mc_rm
+        Suma_mc_2do = total2do_mc_rd + total2do_mc_ri + total2do_mc_rm
+        Suma_total_mc = total_mc_rd + total_mc_ri + total_mc_rm
+
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Material A',Suma_ma_1er ,Suma_ma_2do,Suma_total_ma))
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Material B',Suma_mb_1er ,Suma_mb_2do,Suma_total_mb))
+        print("{:<30} {:<20} {:<20} {:<13} ".format('Material C',Suma_mc_1er ,Suma_mc_2do,Suma_total_mc))
+        print("")
+        print(Separador)
+        print("")
+        print("-"*15 + "Presupuesto de compra de materiales" + "-"*15)
+        print("{:<30} {:<20} {:<20} {:<13} ".format(' '*10,"1er. Semestre" ,"2do. Semestre","Total 2021"))
+        print("Materia A")
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Requerimiento de materiales",Suma_ma_1er,Suma_ma_2do,Suma_total_ma))
+        print("{:<30} {:<20} {:<20} {:<13} ".format("(+) Inventario final",iip_ma,ifs_ma,ifs_ma))
+        total1er_ma = iip_ma + Suma_ma_1er
+        total2do_ma = ifs_ma + Suma_ma_2do
+        total_ma = ifs_ma + Suma_total_ma
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Total de materiales",total1er_ma,total2do_ma,total_ma))
+        print("{:<30} {:<20} {:<20} {:<13} ".format("(-) Inventario inicial",iip_ma,iip_ma,iip_ma))
+        material_compra_ma_1er = total1er_ma - iip_ma 
+        material_compra_ma_2do =  total2do_ma - iip_ma
+        material_compra_ma = total_ma - iip_ma  
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Material a comprar",material_compra_ma_1er,material_compra_ma_2do,material_compra_ma))
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Precio de compra",cps_ma,css_ma," "*10))
+        total_ma_1er = material_compra_ma_1er * cps_ma
+        total_ma_2do = material_compra_ma_2do * css_ma 
+        total_ma_precio = total_ma_1er + total_ma_2do
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Total de material A en $",total_ma_1er,total_ma_2do,total_ma_precio))
+        print("Material B")
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Requerimiento de materiales",Suma_mb_1er,Suma_mb_2do,Suma_total_mb))
+        print("{:<30} {:<20} {:<20} {:<13} ".format("(+) Inventario final",iip_mb,ifs_mb,ifs_mb))
+        total1er_mb = iip_mb + Suma_mb_1er
+        total2do_mb = ifs_mb + Suma_mb_2do
+        total_mb = ifs_mb + Suma_total_mb
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Total de materiales",total1er_mb,total2do_mb,total_mb))
+        print("{:<30} {:<20} {:<20} {:<13} ".format("(-) Inventario inicial",iip_mb,iip_mb,iip_mb))
+        material_compra_mb_1er =  total1er_mb - iip_mb 
+        material_compra_mb_2do =  total2do_mb - iip_mb  
+        material_compra_mb = total_mb - iip_mb 
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Material a comprar",material_compra_mb_1er,material_compra_mb_2do,material_compra_mb))
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Precio de compra",cps_mb,css_mb," "*10))
+        total_mb_1er = material_compra_mb_1er * cps_mb
+        total_mb_2do = material_compra_mb_2do * css_mb 
+        total_mb_precio = total_mb_1er + total_mb_2do
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Total de material B en $",total_mb_1er,total_mb_2do,total_mb_precio))
+        print("Material C")
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Requerimiento de materiales",Suma_mc_1er,Suma_mc_2do,Suma_total_mc))
+        print("{:<30} {:<20} {:<20} {:<13} ".format("(+) Inventario final",iip_mc,ifs_mc,ifs_mc))
+        total1er_mc = iip_mc + Suma_mc_1er
+        total2do_mc = ifs_mc + Suma_mc_2do
+        total_mc = ifs_mc + Suma_total_mc
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Total de materiales",total1er_mc,total2do_mc,total_mc))
+        print("{:<30} {:<20} {:<20} {:<13} ".format("(-) Inventario inicial",iip_mc,iip_mc,iip_mc))
+        material_compra_mc_1er = total1er_mc - iip_mc 
+        material_compra_mc_2do = total2do_mc - iip_mc
+        material_compra_mc = total_mc - iip_mc 
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Material a comprar",material_compra_mc_1er,material_compra_mc_2do,material_compra_mc))
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Precio de compra",cps_mc,css_mc," "*10))
+        total_mc_1er = material_compra_mc_1er * cps_mc
+        total_mc_2do = material_compra_mc_2do * css_mc 
+        total_mc_precio = total_mc_1er + total_mc_2do
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Total de material C en $",total_mc_1er,total_mc_2do,total_mc_precio))
+        print(" ")
+        compra_to_1er = total_mc_1er + total_mb_1er + total_ma_1er
+        compra_to_2do = total_ma_2do + total_mb_2do + total_mc_2do
+        compra_to = total_mc_precio + total_mb_precio + total_ma_precio
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Compras totales",compra_to_1er,compra_to_2do,compra_to))
+        print(" ")
+        print(Separador)
+        print(" ")
+        print("-"*15 + "Determinacion del saldo de proveedores y flujos de salida" + "-"*15)
+        print("{:<30} {:<20} {:<20} ".format("Descripcion","Importe","Total"))
+        print("{:<30} {:<20} {:<20} ".format("Saldo de proveedor 31-DIC-2020"," "*10,proveedor))
+        print("{:<30} {:<20} {:<20} ".format("Compra 2021"," "*10,compra_to))
+        Suma_saldo = proveedor + compra_to
+        print("{:<30} {:<20} {:<20} ".format("Total de proveedores"," "*10,Suma_saldo))
+        print(" ")
+        print("Salidas de efectivo")
+        print("{:<30} {:<20} {:<20} ".format("Por proveedores del 2020",proveedor," "*10))
+        porcentaje_proveedor =compra_to * 0.5
+        print("{:<30} {:<20} {:<20} ".format("Por proveedores del 2021",porcentaje_proveedor," "*10))
+        total_salida = porcentaje_proveedor + proveedor
+        print("{:<30} {:<20} {:<20} ".format("Total de salidas 2021:"," "*10,total_salida))
+        print("")
+        total_provedores = Suma_saldo - total_salida 
+        print("{:<30} {:<20} {:<20} ".format("Saldo de proveedores del 2021"," "*10,total_provedores))
+        print("")
+        print(Separador)
+        print("")
+##
+        print("-"*15 + "Presupuesto de mano de obra directa" + "-"*15)
+        print("{:<50} {:<20} {:<20} {:<13} ".format(" "*10,"1er. Semestre","2.do Semestre","Total 2021")) 
+        print("Productos RM")
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Unidades a producir",vpps_rm,resta_unidades_2do_rm,total_unidades_rm))
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Horas requeridas por unidad",mho_rm,mho_rm,mho_rm))
+        hr_1er_rm = vpps_rm * mho_rm
+        hr_2do_rm = resta_unidades_2do_rm * mho_rm
+        total_hr_rm = total_unidades_rm * mho_rm
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Total de horas requeridas",hr_1er_rm,hr_2do_rm,total_hr_rm))
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Cuota por hora",15,18," "*10))
+        importe_1er_rm = hr_1er_rm * 15
+        importe_2do_rm = hr_2do_rm * 18
+        total_importe_rm = importe_1er_rm + importe_2do_rm
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Importe de M.O.D",importe_1er_rm,importe_2do_rm,total_importe_rm))
+        print("Producto RD")
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Unidades a producir",vpps_rd,resta_unidades_2do_rd,total_unidades_rd))
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Horas requeridas por unidad",mho_rd,mho_rd,mho_rd))
+        hr_1er_rd = vpps_rd * mho_rd
+        hr_2do_rd = resta_unidades_2do_rd * mho_rd
+        total_hr_rd = total_unidades_rd * mho_rd
+        print("{:<50} {:<20} {:<20} {:<13}".format("Total de horas requeridas",hr_1er_rd,hr_2do_rd,total_hr_rd))
+        print("{:<50} {:<20} {:<20} {:<13}".format("Cuota por hora",15,18," "*10))
+        importe_1er_rd = hr_1er_rd * 15
+        importe_2do_rd = hr_2do_rd * 18
+        total_importe_rd = importe_1er_rd + importe_2do_rd
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Importe de M.O.D",importe_1er_rd,importe_2do_rd,total_importe_rd))
+        print("Producto Ri")
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Unidades a producir",vpps_ri,resta_unidades_2do_ri,total_unidades_ri))
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Horas requeridas por unidad",mho_ri,mho_ri,mho_ri))
+        hr_1er_ri = vpps_ri * mho_ri
+        hr_2do_ri = resta_unidades_2do_ri * mho_ri
+        total_hr_ri = total_unidades_ri * mho_ri
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Total de horas requeridas",hr_1er_ri,hr_2do_ri,total_hr_ri))
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Cuota por hora",15,18," "*10))
+        importe_1er_ri = hr_1er_ri * 15
+        importe_2do_ri = hr_2do_ri * 18
+        total_importe_ri = importe_1er_ri + importe_2do_ri
+        print("{:<50} {:<20} {:<20} {:<13}".format("Importe de M.O.D",importe_1er_ri,importe_2do_ri,total_importe_ri))
+        total_horas_1er = hr_1er_rd + hr_1er_ri + hr_1er_rm
+        total_horas_2do = hr_2do_rd + hr_2do_ri + hr_2do_rm
+        total_horas = total_hr_rd + total_hr_ri + total_hr_rm
+        print("")
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Total de horas requeridas por semestre",total_horas_1er,total_horas_2do,total_horas))
+        MOD_1er = importe_1er_rm +importe_1er_rd + importe_1er_ri
+        MOD_2do = importe_2do_rm + importe_2do_rd + importe_2do_ri
+        suma_MOD_total = total_importe_rd + total_importe_ri + total_importe_rm  
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Total de M.O.D por semestre",MOD_1er,MOD_2do,suma_MOD_total))
+        print(" ")
+        print(Separador)
+        print(" ")
+        print("-"*15 + "Presupuesto de gastos indirectos de fabricacion" + "-"*15)
+        print("{:<30} {:<20} {:<20} {:<13} ".format(" "*10,"1er. Semestre","2.do Semestre","Total 2021"))
+        depre_entre_2 = depreciacion_gf /2
+        suma_depre = depre_entre_2 + depre_entre_2
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Depreciacion",depre_entre_2,depre_entre_2,suma_depre))
+        seguro_entre_2 = seguros_gf/2
+        suma_seguro = seguro_entre_2 + seguro_entre_2
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Seguro",seguro_entre_2,seguro_entre_2,suma_seguro))
+        suma_mantenimiento = mantenimiento_gf_ss + mantenimiento_gf_ps
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Mantenimiento",mantenimiento_gf_ps,mantenimiento_gf_ss,suma_mantenimiento))
+        suma_energetico = energeticos_gf_ps + energeticos_gf_ss
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Energeticos",energeticos_gf_ps,energeticos_gf_ss,suma_energetico))
+        varios_entre_2 = varios_gf / 2
+        suma_varios = varios_entre_2 + varios_entre_2
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Varios",varios_entre_2,varios_entre_2,suma_varios))
+        suma_gif_1er = depre_entre_2 + seguro_entre_2 + mantenimiento_gf_ps + varios_entre_2 + energeticos_gf_ps
+        suma_gif_2do = depre_entre_2 + seguro_entre_2 + mantenimiento_gf_ss + varios_entre_2 + energeticos_gf_ss
+        suma_gif = suma_depre + suma_seguro + suma_mantenimiento + suma_energetico + suma_varios
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Total G.I.F por semestre",suma_gif_1er,suma_gif_2do,suma_gif))
+        print("Coeficiente para determinar el costo por hora de gastos indirectos de fabricacion")
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Total de G.I.F"," "*10," "*10,suma_gif))
+        print("{:<30} {:<20} {:<20} {:<13} ".format("(/)Total horas M.O.D anual"," "*10," "*10,total_horas))
+        div_hora_gif = suma_gif / total_horas
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Total de G.I.F"," "*10," "*10,div_hora_gif))
+        print(" ")
+        print(Separador)
+        print("")
+        print(" "*15 + "Presupuesto de gastos de operacion" + " "*15)
+        print("{:<30} {:<20} {:<20} {:<13} ".format(" "*10,"1er. Semestre","2do.Semestre","Total 2021"))
+        div_depreciacion_ga = depreciacion_ga/2
+        suma_depreciacion_ga = div_depreciacion_ga + div_depreciacion_ga
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Depreciacion",div_depreciacion_ga,div_depreciacion_ga,suma_depreciacion_ga))
+        div_sueldo_salarios_ga = sueldo_salario_ga / 2
+        suma_sueldo_salarios_ga = div_sueldo_salarios_ga + div_sueldo_salarios_ga
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Sueldo y Salarios",div_sueldo_salarios_ga,div_sueldo_salarios_ga,suma_sueldo_salarios_ga))
+        mul_comision_ga_1er = Suma_importe_1er * 0.01
+        mul_comision_ga_2do = Suma_importe_2do * 0.01
+        suma_comision_ga = mul_comision_ga_1er + mul_comision_ga_2do
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Comisiones",mul_comision_ga_1er,mul_comision_ga_2do,suma_comision_ga))
+        suma_varios_ga = varios_ss + varios_ps
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Varios",varios_ps,varios_ss,suma_varios_ga))
+        div_intereses_prestamo_ga = intereses_prestamo_ga /2
+        suma_intereses_prestamo_ga = div_intereses_prestamo_ga + div_intereses_prestamo_ga
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Intereses del prestamo",div_intereses_prestamo_ga,div_intereses_prestamo_ga,suma_intereses_prestamo_ga))
+        suma_gastos_1er = div_depreciacion_ga + varios_ps + mul_comision_ga_1er + div_sueldo_salarios_ga + div_intereses_prestamo_ga
+        suma_gastos_2do = div_depreciacion_ga + varios_ss + mul_comision_ga_2do + div_sueldo_salarios_ga + div_intereses_prestamo_ga 
+        suma_gastos_total = suma_intereses_prestamo_ga + suma_comision_ga + suma_sueldo_salarios_ga +suma_depreciacion_ga +suma_varios_ga
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Total de gastos de operacion",suma_gastos_1er,suma_gastos_2do,suma_gastos_total))
+        print("")
+        print(Separador)
+        print("")
+        print(" "*15 + "Determinacion del costo unitario de productos terminados" + " "*15)
+        print("Producto RM")
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Descripcion","Costo","Cantidad","Costo unitario"))
+        mul_costoUnitario_ma_rm = css_ma * rm_ma
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Materia A",css_ma,rm_ma,mul_costoUnitario_ma_rm))
+        mul_costoUnitario_mb_rm = css_mb * rm_mb
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Materia B",css_mb,rm_mb,mul_costoUnitario_mb_rm))
+        mul_costoUnitario_mc_rm = css_mc * rm_mc
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Materia C",css_mc,rm_mc,mul_costoUnitario_mc_rm))
+        mul_costoUnitario_mho_rm = 18 * mho_rm
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Mano de obra",18,mho_rm,mul_costoUnitario_mho_rm))
+        mul_costoUnitario_GIF_rm = div_hora_gif * mho_rm
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Gastos indirectos de fabricacion",div_hora_gif,mho_rm,mul_costoUnitario_GIF_rm))
+        Suma_costoUnitario_rm = mul_costoUnitario_ma_rm + mul_costoUnitario_mb_rm + mul_costoUnitario_mc_rm + mul_costoUnitario_mho_rm + mul_costoUnitario_GIF_rm
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Costo unitario"," "*10," "*10,Suma_costoUnitario_rm))
+        print("Producto RD")        
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Descripcion","Costo","Cantidad","Costo unitario"))
+        mul_costoUnitario_ma_rd = css_ma * rd_ma
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Materia A",css_ma,rd_ma,mul_costoUnitario_ma_rd))
+        mul_costoUnitario_mb_rd = css_mb * rd_mb
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Materia B",css_mb,rm_mb,mul_costoUnitario_mb_rd))
+        mul_costoUnitario_mc_rd = css_mc * rd_mc
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Materia C",css_mc,rm_mc,mul_costoUnitario_mc_rd))
+        mul_costoUnitario_mho_rd = 18 * mho_rd
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Mano de obra",18,mho_rd,mul_costoUnitario_mho_rd))
+        mul_costoUnitario_GIF_rd = div_hora_gif * mho_rd
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Gastos indirectos de fabricacion",div_hora_gif,mho_rm,mul_costoUnitario_GIF_rd))
+        Suma_costoUnitario_rd = mul_costoUnitario_ma_rd + mul_costoUnitario_mb_rd + mul_costoUnitario_mc_rd + mul_costoUnitario_mho_rd + mul_costoUnitario_GIF_rd
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Costo unitario"," "*10," "*10,Suma_costoUnitario_rd))
+        print("Producto RI")
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Descripcion","Costo","Cantidad","Costo unitario"))
+        mul_costoUnitario_ma_ri = css_ma * ri_ma
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Materia A",css_ma,ri_ma,mul_costoUnitario_ma_ri))
+        mul_costoUnitario_mb_ri = css_mb * ri_mb
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Materia B",css_mb,ri_mb,mul_costoUnitario_mb_ri))
+        mul_costoUnitario_mc_ri = css_mc * ri_mc
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Materia C",css_mc,ri_mc,mul_costoUnitario_mc_ri))
+        mul_costoUnitario_mho_ri = 18 * mho_ri
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Mano de obra",18,mho_ri,mul_costoUnitario_mho_ri))
+        mul_costoUnitario_GIF_ri = div_hora_gif * mho_ri
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Gastos indirectos de fabricacion",div_hora_gif,mho_rm,mul_costoUnitario_GIF_ri))
+        Suma_costoUnitario_ri = mul_costoUnitario_ma_ri + mul_costoUnitario_mb_ri + mul_costoUnitario_mc_ri + mul_costoUnitario_mho_ri + mul_costoUnitario_GIF_ri
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Costo unitario"," "*10," "*10,Suma_costoUnitario_ri))
+        print("")
+        print(Separador)
+        print("")
+        print(" "*15 + "Valuacion de inventarios finales" + " "*15)
+        print(" "*15 + "Inventario final de materiales" + " "*15)
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Descripcion"," Unidades","Costo unitario","Costo total"))
+        mul_costoUnitario_ma = ifs_ma *css_ma
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Material A",ifs_ma,css_ma,mul_costoUnitario_ma))
+        mul_costoUnitario_mb = ifs_mb * css_mb
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Material B",ifs_mb,css_mb,mul_costoUnitario_mb))
+        mul_costoUnitario_mc = ifs_mc * css_mc
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Material C",ifs_mc,css_mc,mul_costoUnitario_mc))
+        suma_inventario_final_materiales = mul_costoUnitario_ma + mul_costoUnitario_mb + mul_costoUnitario_mc
+        print("{:<30} {:<20} {:<20} {:<13} ".format("Inventario final de materiales"," "*10," "*10,suma_inventario_final_materiales))
+        print(" "*15 + "Inventario final de productos terminados" + " "*15)
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Descripcion"," Unidades","Costo unitario","Costo total"))
+        mul_costoUnitario_rm= ifs_rm * Suma_costoUnitario_rm
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Producto RM",ifs_rm,Suma_costoUnitario_rm,mul_costoUnitario_rm))
+        mul_costoUnitario_rd= ifs_rd * Suma_costoUnitario_rd
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Producto RD",ifs_rm,Suma_costoUnitario_rd,mul_costoUnitario_rd))
+        mul_costoUnitario_ri= ifs_ri * Suma_costoUnitario_ri
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Producto RI",ifs_ri,Suma_costoUnitario_ri,mul_costoUnitario_ri))
+        suma_inventario_final_materiales_terminados = mul_costoUnitario_rm + mul_costoUnitario_rd + mul_costoUnitario_ri
+        print("{:<50} {:<20} {:<20} {:<13} ".format("Inventario Final de producto terminado"," "*10," "*10,suma_inventario_final_materiales_terminados))
+        print("")
+        print(Separador)
+        print("")
+        print(" "*15 + "Relojes mexicanos S.A de C.V" + " "*15)
+        print(" "*15 + "Estado de costo de produccion y ventas" + " "*15)      
+        print(" "*6 + "Presupuesto del 1 de enero al 31 de diciembre del 2021" + " "*6)
+        print("")
+        print("{:<50} {:<20}  ".format("Saldo inicial de materiales",inventarios_materiales,))
+        print("{:<50} {:<20}  ".format("(+) Compras de materiales",compra_to))
+        Suma_material_disponible = inventarios_materiales + compra_to
+        print("{:<50} {:<20}  ".format("(=)Materiales disponible",Suma_material_disponible))
+        print("{:<50} {:<20}  ".format("(-)Inventario final de materiales",suma_inventario_final_materiales))
+        resta_materiales_utilizados = Suma_material_disponible - suma_inventario_final_materiales
+        print("{:<50} {:<20}  ".format("(=) Materiales utilizados",resta_materiales_utilizados))
+        print("{:<50} {:<20}  ".format("(+) Mano de obra directa",suma_MOD_total))
+        print("{:<50} {:<20}  ".format("(+) Gastos de fabricacion indirectos",suma_gif))
+        suma_costo_produccion = resta_materiales_utilizados + suma_MOD_total + suma_gif
+        print("{:<50} {:<20}  ".format("(=) Costo de produccion",suma_costo_produccion))
+        print("{:<50} {:<20}  ".format("(+) Inventario inicial de productos terminados",inventario_productos))
+        suma_produccion_disponible = suma_costo_produccion + inventario_productos
+        print("{:<50} {:<20}  ".format("(=) Total de produccion disponible",suma_produccion_disponible))
+        print("{:<50} {:<20}  ".format("(-) Inventario final de productos terminados",suma_inventario_final_materiales_terminados))
+        resta_costo_ventas = suma_produccion_disponible - suma_inventario_final_materiales_terminados
+        print("{:<50} {:<20}  ".format("(=) Costo de ventas",resta_costo_ventas))
+        print(" ")
+        print(Separador)
+        print(" ")
+        print(" "*15 + "Relojeria Mexicanos S.A de C.V" + " "*15)
+        print(" "*15 + "Estado de resultados" + " "*15)
+        print(" "*6 + "Presupuesto del 1 de enero al 31 de diciembre del 2021" + " "*6)
+        print("{:<30} {:<20}".format("Ventas", Total_ventas))
+        print("{:<30} {:<20}".format("(-)Costo de ventas",resta_costo_ventas )) 
+        Utilidad_b = Total_ventas - resta_costo_ventas
+        print("{:<30} {:<20}".format("(=)Utilidad bruta",Utilidad_b ))
+        print("{:<30} {:<20}".format("(-)Gastos de operacion",suma_gastos_total )) 
+        Utilidad_o = Utilidad_b - suma_gastos_total
+        print("{:<30} {:<20}".format("(=)Utilidad de Operacion",Utilidad_o ))
+        isr_30 = Utilidad_o * 0.3
+        print("{:<30} {:<20}".format("(-)ISR",isr_30 ))
+        ptu_10 = Utilidad_o * 0.1
+        print("{:<30} {:<20}".format("(-)PTU",ptu_10))
+        Utilidad_n = Utilidad_o - isr_30 - ptu_10
+        print("{:<30} {:<20}".format("Ventas",Utilidad_n))
+        print(" ")
+        print(Separador)
+        print(" ")
+        print(" "*15 + "Relojeria Mexicanos S.A de C.V" + " "*15)
+        print(" "*15 + "Estado de flujo de efectivo" + " "*15)
+        print(" "*6 + "Presupuesto del 1 de enero al 31 de diciembre del 2021" + " "*6)
+        print("{:<40} {:<20} {:<20}".format("Saldo inicial de efectivo", " "*10, efectivo))
+        print("Entradas: ")
+        print("{:<40} {:<20}{:<20}".format("Cobranza 2021", Cobranza_2021," "*10))
+        print("{:<40} {:<20}{:<20}".format("Cobranza 2020", cliente, " "*10))
+        total_entrada = Cobranza_2021 + cliente
+        print("{:<40} {:<20}{:<20}".format("Total de entradas"," "*10,total_entrada))
+        Efectivo_disponible = total_entrada + efectivo
+        print("{:<40} {:<20}{:<20}".format("Efectivo disponible"," "*10,Efectivo_disponible))
+        print("Salidas: ")
+        print("{:<40} {:<20}{:<20}".format("Proveedores 2021", porcentaje_proveedor," "*10))
+        print("{:<40} {:<20}{:<20}".format("Proveedores 2020", proveedor, " "*10))
+        print("{:<40} {:<20}{:<20}".format("Pago mano de obra directa", suma_MOD_total," "*10))
+        Pago_gasto_ind =  suma_gif - suma_depre 
+        print("{:<40} {:<20}{:<20}".format("Pago gastos indirectos de fabricacion", Pago_gasto_ind," "*10))
+        Pago_gastoOpe = suma_gastos_total - suma_depreciacion_ga
+        print("{:<40} {:<20}{:<20}".format("Pago de gastos de operacion", Pago_gastoOpe," "*10))
+        print("{:<40} {:<20}{:<20}".format("Compra de activo fijo (Maquinaria)", 85000," "*10))
+        print("{:<40} {:<20}{:<20}".format("Pago ISR 2020", isr_pagar," "*10))
+        print("{:<40} {:<20}{:<20}".format("Pago ISR 2021", 0," "*10))
+        total_salidas = isr_pagar + 85000 + Pago_gastoOpe + Pago_gasto_ind + suma_MOD_total + proveedor + porcentaje_proveedor
+        print("{:<40} {:<20}{:<20}".format("Total de salidas", " "*10, total_salidas))
+        flujo_efectivo = Efectivo_disponible - total_salidas
+        print("{:<40} {:<20}{:<20}".format("Flujo de efectivo actual"," "*10 ,flujo_efectivo,))
+        print(" ")
+        print(Separador)
+        print(" ")
+        print(" "*15 + "Relojeria Mexicanos S.A de C.V" + " "*15)
+        print(" "*15 + "Balance general" + " "*15)
+        print(" "*6 + "Presupuesto del 1 de enero al 31 de diciembre del 2021" + " "*6)
+        print("Activo")
+        print("Circulante")
+        print("{:<50} {:<20}{:<20}".format("Efectivo",flujo_efectivo," "*10))
+        print("{:<50} {:<20}{:<20}".format("Cliente", saldo_total_cliente_2021," "*10))
+        print("{:<50} {:<20}{:<20}".format("Deudores diversos", deudores_diversos," "*10))
+        print("{:<50} {:<20}{:<20}".format("Funcionarios y empleados", funcionario_empleados," "*10))
+        print("{:<50} {:<20}{:<20}".format("Inventario de materiales", suma_inventario_final_materiales," "*10))
+        print("{:<50} {:<20}{:<20}".format("Inventario final de productos terminado", suma_inventario_final_materiales_terminados," "*10))
+        Suma_activosC = flujo_efectivo + saldo_total_cliente_2021 + deudores_diversos + funcionario_empleados + suma_inventario_final_materiales + suma_inventario_final_materiales_terminados
+        print("{:<50} {:<20}{:<20}".format("Total de activos circulantes", " "*10,Suma_activosC))
+        print("")
+        print("No circulante")
+        print("{:<50} {:<20}{:<20}".format("Terreno",terreno," "*10))
+        suma_PlantEqui = planta_equipo + 85000
+        print("{:<50} {:<20}{:<20}".format("Planta y equipo",suma_PlantEqui," "*10 ))
+        depreciacion_acumulada_general = depreciacion_acum - suma_depreciacion_ga - suma_depre
+        print("{:<50} {:<20}{:<20}".format("Depreciacion Acumulada", depreciacion_acumulada_general," "*10))
+        suma_activosNC = suma_PlantEqui + depreciacion_acumulada_general + terreno
+        print("{:<50} {:<20}{:<20}".format("Inventario de materiales", " "*10,suma_activosNC))
+        print("")
+        suma_activos_total = suma_activosNC + Suma_activosC
+        print("{:<50} {:<20}{:<20}".format("Activo total"," "*10,suma_activos_total ))
+        print("")
+        print("Pasivo")
+        print("Corto plazo")
+        print("{:<50} {:<20}{:<20}".format("Proveedores",total_provedores," "*10))
+        print("{:<50} {:<20}{:<20}".format("Documento por pagar", documentos_pagar,""*10))
+        print("{:<50} {:<20}{:<20}".format("ISR por pagar",isr_30 ," "*10))
+        print("{:<50} {:<20}{:<20}".format("PTU por pagar",ptu_10, " "*10))
+        Suma_pasivosCP_total = total_provedores + documentos_pagar + isr_30 + ptu_10
+        print("{:<50} {:<20}{:<20}".format("Total de pasivos corto plazo", " "*10,Suma_pasivosCP_total))
+        print("")
+        print("Largo plazo")
+        print("{:<50} {:<20}{:<20}".format("Prestamos bancarios",Prestamos_bancarios ," "*10))
+        Suma_pasivosLP_total = Prestamos_bancarios
+        print("{:<50} {:<20}{:<20}".format("Total de pasivos largo plazo"," "*10,Suma_pasivosLP_total))
+        print("")
+        suma_pasivos_total = Suma_pasivosCP_total + Suma_pasivosLP_total
+        print("{:<50} {:<20}{:<20}".format("Pasivos total", " "*10,suma_pasivos_total))
+        print("")
+        print("Capital Contable")
+        print("{:<50} {:<20}{:<20}".format("Capital aportado",capital_constribuido," "*10))
+        print("{:<50} {:<20}{:<20}".format("Capital ganado", capital_ganado," "*10))
+        print("{:<50} {:<20}{:<20}".format("Utilidad del ejercicio", Utilidad_n," "*10))
+        Suma_capitalC_total = capital_constribuido + capital_ganado + Utilidad_n
+        print("{:<50} {:<20}{:<20}".format("Total de capital contable"," "*10,Suma_capitalC_total))
+        Suma_pasivo_capital = Suma_capitalC_total + suma_pasivos_total
+        print("{:<50} {:<20}{:<20}".format("Suma de pasivos y capital"," "*10,Suma_pasivo_capital))
+        Balance = suma_activos_total - Suma_pasivo_capital
+        print(Separador)
+        print("{:<50} {:<20}{:<20}".format("Confirmador de balance", " "*20,Balance))
+
+    elif Menu == "C":
+        break
+    else:
+        print("Esa parte del menu no existe")
+        continue
